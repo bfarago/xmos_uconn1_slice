@@ -29,7 +29,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:xmos_uconn1
-LIBS:xmos_uconn1-cache
+LIBS:slice
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -37,7 +37,7 @@ encoding utf-8
 Sheet 1 1
 Title "XMOS U Conn 1"
 Date "2017-06-02"
-Rev "1v0"
+Rev "1v0a"
 Comp "MYND-ideal ltd"
 Comment1 "U Connector slice for xmos devboards"
 Comment2 ""
@@ -713,12 +713,10 @@ Text Notes 3350 2750 0    60   ~ 0
 Connector "A", the master board connector. On XP-SKC-L2 this is\nthe right-topmost "Square" slice connector.
 Text Notes 7100 1050 0    60   ~ 0
 The goal of this small board to daizy chain two devboards, which originally have\nno capable connectors. Basically this board is similar to XA-SK-XTAG2 board just\nrevers direction in connectors wise.
-Text Notes 7400 5000 0    79   ~ 16
+Text Notes 7450 2400 0    79   ~ 16
 Please check the C/PMOD connectors data lines,\nfollowing to some XMOS port-with specific\nstrategy, if there can be any...  And digilent PMODs\ntypical pin usage can be a point of view.\nI mean, we can still route the pins now anyway. \nHow is the best?
 Text Notes 7450 1500 0    79   ~ 16
 REVIEW THIS: \nI were double-checked the TDI/TDO thing...\nBut better to check it multiple times, before PCB mfg. :)\n
-Text Notes 7500 2200 0    79   Italic 0
--SlicePcbCon part A16, A17 pins are mixed, at least\n pin signs?
 Wire Notes Line
 	7200 1100 7200 5050
 Wire Notes Line
@@ -727,9 +725,11 @@ Wire Notes Line
 	11050 5050 11050 1100
 Wire Notes Line
 	11050 1100 7200 1100
-Text Notes 7450 1900 0    79   Italic 16
+Text Notes 7450 2700 0    79   Italic 16
 Findings:
 NoConn ~ 4300 2150
-Text Notes 7500 2350 0    79   Italic 0
+Text Notes 7550 2900 0    79   Italic 0
 -Sys CLK pin is not used by XSYS connector.
+Text Notes 12200 3300 0    79   Italic 0
+-SlicePcbCon part A16, A17 pins are mixed, at least\n pin signs?
 $EndSCHEMATC

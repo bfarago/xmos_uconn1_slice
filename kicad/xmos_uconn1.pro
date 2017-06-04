@@ -57,6 +57,7 @@ LibName27=atmel
 LibName28=contrib
 LibName29=valves
 LibName30=xmos_uconn1
+LibName31=slice
 [general]
 version=1
 [schematic_editor]
