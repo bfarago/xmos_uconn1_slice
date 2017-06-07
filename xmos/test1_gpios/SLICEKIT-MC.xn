@@ -19,6 +19,8 @@
                         <Bootee NodeId="SLICE_1" Tile="0"/>
                         <Bootee NodeId="SLICE-kit1_0" Tile="1"/>
                         <Bootee NodeId="SLICE-kit1_1" Tile="1"/>
+                        <Bootee NodeId="MC_0" Tile="1"/>
+                        <Bootee NodeId="MC_1" Tile="1"/>                        
                     </Boot>
                     <Tile Number="0" Reference="tile[0]">
                       <Port Location="XS1_PORT_1A"  Name="PORT_SPI_MISO"/>
@@ -55,37 +57,24 @@
 				</Node>
 			</Nodes>
         </Package>
-		
 		<Package id="2" Type="XS2-UEnA-512-FB236">
 			<Nodes>
-				<Node Id="MC_0" InPackageId="2" Type="XS2-L16A-512" OscillatorSrc="1" SystemFrequency="500MHz">
+				<Node Id="MC_0" InPackageId="0" Type="XS2-L16A-512" Oscillator="1" SystemFrequency="500MHz">
 					<Boot>
 						<Source Location="LINK" />
 					</Boot>
-					<Tile Number="2" Reference="tile[4]">
+					<Tile Number="0" Reference="tile[4]">
 					</Tile>
-					<Tile Number="3" Reference="tile[5]"/>
 				</Node>
-				<Node Id="MC_1" InPackageId="2" Type="periph:XS1-SU" Reference="usb_tile" Oscillator="24MHz">
+				<Node Id="MC_1" InPackageId="1" Type="periph:XS1-SU" Reference="usb_tile" Oscillator="24MHz">
 				</Node>
 			</Nodes>
-			<Links>
-			<Link Encoding="5wire">
-				<LinkEndpoint NodeId="0" Link="8" Delays="52clk,52clk"/>
-				<LinkEndpoint NodeId="1" Link="0" Delays="1clk,1clk"/>
-			</Link>
-			</Links>
 		</Package>
 	</Packages>
      
     <Nodes>
 		<Node Id="XSCOPE_ID" Type="device:" routingId="0x8000">
 			<Service Id="0" Proto="xscope_host_data(chanend c);">
-				<Chanend Identifier="c" end="3"/>
-			</Service>
-		</Node>
-		<Node Id="2" Type="device:" RoutingId="0x8000">
-			<Service Id="1" Proto="xscope_host_data(chanend c);">
 				<Chanend Identifier="c" end="3"/>
 			</Service>
 		</Node>
@@ -134,11 +123,17 @@
             <LinkEndpoint NodeId="SLICE_1" Link="X0LB"/>
             <LinkEndpoint NodeId="SLICE-kit1_0" Link="X0LB"/>
         </Link>
-		
-		<Link Encoding="2wire" Delays="4,4" Flags="XSCOPE_MC">
-		  <LinkEndpoint NodeId="MC_0" Link="0"/>
-		  <LinkEndpoint NodeId="MC_2" Chanend="1"/>
-		</Link>
+        
+        <Link Encoding="5wire" Delays="4,4">
+            <LinkEndpoint NodeId="SLICE-kit1_1" Link="X0LB"/>
+            <LinkEndpoint NodeId="MC_0" Link="X0LB"/>
+        </Link>
+        
+        <Link Encoding="5wire" Delays="4,4">
+            <LinkEndpoint NodeId="MC_0" Link="XL4"/>
+            <LinkEndpoint NodeId="MC_1" Link="XL7"/>
+        </Link>
+        
         </Links>
 
         <ExternalDevices>
